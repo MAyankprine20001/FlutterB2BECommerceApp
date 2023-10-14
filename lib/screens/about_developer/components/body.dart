@@ -220,7 +220,7 @@ class Body extends StatelessWidget {
         Logger().w("Unknown Exception: $e");
         snackbarMessage = e.toString();
       } finally {
-        Logger().i(snackbarMessage);0
+        Logger().i(snackbarMessage);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(snackbarMessage),

@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -679,7 +680,9 @@ class _EditProductFormState extends State<EditProductForm> {
   }
 
   Future<void> addImageButtonCallback({int index}) async {
+    log('check 1');
     final productDetails = Provider.of<ProductDetails>(context, listen: false);
+    log('check 2');
     if (index == null && productDetails.selectedImages.length >= 3) {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text("Max 3 images can be uploaded")));
@@ -688,8 +691,11 @@ class _EditProductFormState extends State<EditProductForm> {
     String path;
     String snackbarMessage;
     try {
+      log('check 3');
       path = await choseImageFromLocalFiles(context);
+      log('check 4');
       if (path == null) {
+        log('check 5');
         throw LocalImagePickingUnknownReasonFailureException();
       }
     } on LocalFileHandlingException catch (e) {
